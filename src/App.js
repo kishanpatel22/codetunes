@@ -6,8 +6,8 @@ import CodeTunes from './CodeTunes.js'
 
 function App() {
   return (
-        <div style={{ backgroundColor : '#000F23' }}>
-            <div style={{ margin: 'auto' , width: '90%', paddingTop: '1%'}}>
+        <div style={{ backgroundColor : '#000F23'}}>
+            <div style={{ margin: 'auto' , width: '95%', paddingTop: '0.5%'}}>
                 <CodeTunes />
             </div>
             <div>

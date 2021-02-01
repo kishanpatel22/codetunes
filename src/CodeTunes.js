@@ -25,7 +25,7 @@ class CodeTunes extends Component {
         return (
             <div style={{ backgroundColor : '#0067D4', borderRadius: '60px'}}>  
                 <div style={{ display:'inline-block', paddingLeft: '5%'}}>
-                    <p style={{ color : 'white', fontSize: '18px'}}> 
+                    <p style={{ color : 'white', fontSize: '20px'}}> 
                         Hear <strong style={{ color: '#000F23'}}>music</strong> of any  
                              <strong style={{ color: '#000F23'}}> program source code</strong> 
                         <br/>
@@ -35,7 +35,7 @@ class CodeTunes extends Component {
                 </div>
                 <div style={{ display: 'inline-block' }}>
                     <a target="_blank" href="https://github.com/kishanpatel22/codetunes" 
-                       style={{ marginLeft:'5%', color: 'white', fontSize: '70px', display:'inline-block'}}>
+                       style={{ marginLeft:'5%', color: 'white', fontSize: '70px'}}>
                         CodeTunes 
                     </a>
                 </div>
