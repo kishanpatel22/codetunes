@@ -1,14 +1,33 @@
 import React, { Component } from 'react';
+import Example from './Example.js'
+import Program from './Program.js'
+
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+
 
 class SourceCode extends Component {
     constructor(props) {
         super(props)
+		this.state = {
+			show: false,
+		}
+		this.handleShow = this.handleShow.bind(this)
+		this.handleClose = this.handleClose.bind(this)
     }
+
+	handleClose() {
+		this.setState({ show: false });
+	}
+
+	handleShow() {
+		this.setState({ show: true });
+	}
+
     render() {
         return (
             <Container>
@@ -32,7 +51,26 @@ class SourceCode extends Component {
                 
                     <Col>
                         <div style={{ paddingLeft: '25%', paddingTop: '100%'}}>
-                            <Button variant="outline-info" size="lg">Examples</Button>{' '}
+                            <Button variant="outline-info" size="lg" onClick={this.handleShow}>
+					            Examples 
+                            </Button>
+                            <Modal show={this.state.show} onHide={this.handleClose}>
+					            <Modal.Header closeButton>
+						            <Modal.Title>
+                                        Few examples source codes !
+                                    </Modal.Title>
+					            </Modal.Header>
+					            <Modal.Body>
+                                    <Example name="NodeJS Server" code={Program['nodejs']}/>  
+                                </Modal.Body>
+					            <Modal.Footer>
+                                    <div style={{margin:'auto'}}>
+						                <Button variant="secondary" onClick={this.handleClose}>
+							                Close
+                                        </Button>
+                                    </div>
+					            </Modal.Footer>
+				            </Modal>
                         </div>
                     </Col>
                 </Row>
