@@ -20,9 +20,13 @@ class SourceCode extends Component {
 		}
         this.piano = Piano;
         this.gitar = Gitar;
+        
+        this.programCode = "";
 
 		this.handleShow = this.handleShow.bind(this)
 		this.handleClose = this.handleClose.bind(this)
+        this.updateInputBox = this.updateInputBox.bind(this)
+        this.onChangeText = this.onChangeText.bind(this)
     }
 
 	handleClose() {
@@ -32,6 +36,15 @@ class SourceCode extends Component {
 	handleShow() {
 		this.setState({ show: true });
 	}
+    
+    updateInputBox(programName) {
+        this.programCode = Program[programName];
+		this.setState({ show: false });
+    }
+    
+    onChangeText(event) {
+        this.programCode = event.target.value; 
+    }
 
     render() {
         return (
@@ -49,7 +62,9 @@ class SourceCode extends Component {
                                 <p style={{ color: 'white', fontSize: '20px', textAlign: 'center'}}> 
                                     Gernerate your source code tunes !
                                 </p>
-                                <Form.Control placeHolder="{ Write Source Code }" as="textarea" rows="19" name="address"/>
+                                <Form.Control placeHolder="{ Write Source Code }" value={this.programCode} 
+                                              onChange = {this.onChangeText}
+                                              as="textarea" rows="19" name="program"/>
                             </Form.Group>
                         </Form>
                     </Col>
@@ -69,7 +84,13 @@ class SourceCode extends Component {
                             </Modal.Title>
 					    </Modal.Header>
 					    <Modal.Body>
-                            <Example name="NodeJS Server" code={Program['nodejs']}/>  
+                            <Button variant="light" size="lg" block  onClick={() => this.updateInputBox('nodejs')} >
+                                <Example name="NodeJS Server" code={Program['nodejs']}/>  
+                            </Button>
+                            <br/>
+                            <Button variant="light" size="lg" block  onClick={() => this.updateInputBox('React')} >
+                                <Example name="React" code={Program['React']}/>  
+                            </Button>
                         </Modal.Body>
 					    <Modal.Footer>
                             <div style={{margin:'auto'}}>
