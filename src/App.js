@@ -1,6 +1,4 @@
 import './App.css';
-import Piano from './Piano.js'
-import Gitar from './Gitar.js'
 import SourceCode from './SourceCode.js'
 import CodeTunes from './CodeTunes.js'
 

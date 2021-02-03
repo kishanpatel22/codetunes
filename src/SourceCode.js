@@ -9,6 +9,8 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
+import Piano from './Piano.js'
+import Gitar from './Gitar.js'
 
 class SourceCode extends Component {
     constructor(props) {
@@ -16,6 +18,9 @@ class SourceCode extends Component {
 		this.state = {
 			show: false,
 		}
+        this.piano = Piano;
+        this.gitar = Gitar;
+
 		this.handleShow = this.handleShow.bind(this)
 		this.handleClose = this.handleClose.bind(this)
     }
@@ -54,26 +59,26 @@ class SourceCode extends Component {
                             <Button variant="outline-info" size="lg" onClick={this.handleShow}>
 					            Examples 
                             </Button>
-                            <Modal show={this.state.show} onHide={this.handleClose}>
-					            <Modal.Header closeButton>
-						            <Modal.Title>
-                                        Few examples source codes !
-                                    </Modal.Title>
-					            </Modal.Header>
-					            <Modal.Body>
-                                    <Example name="NodeJS Server" code={Program['nodejs']}/>  
-                                </Modal.Body>
-					            <Modal.Footer>
-                                    <div style={{margin:'auto'}}>
-						                <Button variant="secondary" onClick={this.handleClose}>
-							                Close
-                                        </Button>
-                                    </div>
-					            </Modal.Footer>
-				            </Modal>
                         </div>
                     </Col>
                 </Row>
+                <Modal show={this.state.show} onHide={this.handleClose} size="lg" >
+					<Modal.Header closeButton>
+				    	<Modal.Title>
+                                Few examples source codes !
+                            </Modal.Title>
+					    </Modal.Header>
+					    <Modal.Body>
+                            <Example name="NodeJS Server" code={Program['nodejs']}/>  
+                        </Modal.Body>
+					    <Modal.Footer>
+                            <div style={{margin:'auto'}}>
+					            <Button variant="secondary" onClick={this.handleClose}>
+					                Close
+                                </Button>
+                            </div>
+					    </Modal.Footer>
+				    </Modal>
             </Container>
         )
     }

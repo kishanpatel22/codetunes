@@ -1,14 +1,11 @@
 const Program = {
 
-'nodejs' :  ` /* nodes js server */
-var express     = require('express');
-var bodyparser  = require('body-parser');                                          
-var app = express()
-App.get('/blogs/show_user_blogs/:id', 
-        user_service.authenticate_user_data,
-        function(req, res) {
-
-    blog.findById(req.params.id, function(err, found_blog) {
+'nodejs' :  
+` let express     = require('express'),
+     bodyparser  = require('body-parser'),
+     app = express()
+App.get('/blogs/show_user_blogs/:id',(req, res) => {
+    blog.findById(req.params.id, (err,found_blog) => {
         if(err) {
             console.log('Error in opening a blog');
         } else {
@@ -23,8 +20,8 @@ App.listen(PORT, IP, function() {
     console.log('The server has been started !');
 });`,
 
-'React' :`
-export default function App() {
+'React' :
+`export default function App() {
     return (
         <Router>
             <div>
