@@ -5,7 +5,7 @@ import CodeTunes from './CodeTunes.js'
 function App() {
   return (
         <div style={{ backgroundColor : '#000F23'}}>
-            <div style={{ margin: 'auto' , width: '95%', paddingTop: '0.5%'}}>
+            <div style={{ margin: 'auto' , width: '95%', paddingTop: '1%'}}>
                 <CodeTunes />
             </div>
             <div>

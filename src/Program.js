@@ -4,7 +4,7 @@ const Program = {
 ` let express     = require('express'),
      bodyparser  = require('body-parser'),
      app = express()
-App.get('/blogs/show_user_blogs/:id',(req, res) => {
+app.get('/blogs/show_user_blogs/:id',(req, res) => {
     blog.findById(req.params.id, (err,found_blog) => {
         if(err) {
             console.log('Error in opening a blog');
@@ -13,10 +13,10 @@ App.get('/blogs/show_user_blogs/:id',(req, res) => {
         }
     });
 });
-Var PORT = process.env.PORT || 3000;
-Var IP = process.env.IP || '127.0.0.1';
+let PORT = process.env.PORT || 3000;
+let IP = process.env.IP || '127.0.0.1';
 
-App.listen(PORT, IP, function() {
+app.listen(PORT, IP, function() {
     console.log('The server has been started !');
 });`,
 
