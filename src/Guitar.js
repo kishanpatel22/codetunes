@@ -77,7 +77,7 @@ class Buffer {
 
 }
 
-class Gitar extends Component {
+class Guitar extends Component {
     constructor(props) {
         super(props)
         /* audio context manager for the getting oscillators */
@@ -86,11 +86,12 @@ class Gitar extends Component {
         this.songBuffer = new Buffer(this.ctx, sounds)
         this.songBuffer.getBuffer();
         
+        this.index = 0;
         /* the time after which the song must be changed */
-        this.timeChange = 1
+        this.timeChange = 0.5
 
         this.setup = this.setup.bind(this);
-        this.playSong = this.playSong.bind(this);
+        this.play = this.play.bind(this);
     }
 
     setup(buffer) {
@@ -102,10 +103,12 @@ class Gitar extends Component {
         this.gainNode.gain.setValueAtTime(0.8, this.ctx.currentTime);
     }
 
-    playSong(number) {
+    play(number) {
+        this.index += number
+        this.index = this.index % this.songBuffer.buffer.length
         /* some logic to map given number with some tune on gitar */
 
-        let buffer = this.songBuffer.buffer[number]
+        let buffer = this.songBuffer.buffer[this.index]
         this.setup(buffer);
         let time = this.ctx.currentTime
         this.source.start(time);
@@ -114,4 +117,4 @@ class Gitar extends Component {
     }
 }
 
-export default Gitar
+export default Guitar

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import {React, Component} from 'react'
 
 const AudioContext = window.AudioContext || window.webkitAudioContext
 /* Frequency of Pinao keys in Hz */
@@ -11,19 +11,19 @@ class Piano extends Component {
     constructor(props) {
         super(props)
         this.playSound = false
-        this.songID = 0
+        this.index = 0
         this.freqIndex = 0
         this.oscillatorWaveFromType = "sine"
         this.songFrequency = FrequencyBindings
         this.numFreqBands = this.songFrequency.length
         this.beatsPerMilliSecond = 1000 / 4
-        this.time = 
+        this.timeChange = 0.5
 
         /* audio context manager for the getting oscillators */
         this.ctx = new AudioContext()
         
         this.createOscillator = this.createOscillator.bind(this)
-        this.playSong = this.playSong.bind(this)
+        this.play = this.play.bind(this)
     }
     
     /* will create sound for the paritcular frequency for some constant time */
@@ -41,15 +41,16 @@ class Piano extends Component {
         oscillator.stop(time + this.timeChange)  
     }
     
-    playFreq(number) {
-        let currFreq = this.songFrequency[number]
+    play(number) {
+        if(number === undefined) {
+            return;
+        }
+        /* logic to map given number to particular frequency */
+        this.index = number
+        this.index = this.index % this.numFreqBands
+        let currFreq = this.songFrequency[this.index]
         let time = this.ctx.currentTime;
         this.createOscillator(currFreq, time)
-    }
-
-    playSong(number) {
-        /* logic to map given number to particular frequency */
-        this.playFreq(number)
     }
 }
 
