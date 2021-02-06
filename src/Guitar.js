@@ -92,6 +92,7 @@ class Guitar extends Component {
 
         this.setup = this.setup.bind(this);
         this.play = this.play.bind(this);
+        this.tempplay = this.tempplay.bind(this);
     }
 
     setup(buffer) {
@@ -104,7 +105,7 @@ class Guitar extends Component {
     }
 
     play(number) {
-        this.index += number
+        this.index = number
         this.index = this.index % this.songBuffer.buffer.length
         /* some logic to map given number with some tune on gitar */
 
@@ -114,6 +115,18 @@ class Guitar extends Component {
         this.source.start(time);
         this.gainNode.gain.exponentialRampToValueAtTime(0.001, time + this.timeChange);
         this.source.stop(time + this.timeChange);
+    }
+        
+    tempplay() {
+        this.play(1)
+    }
+
+    render() {
+        return(
+            <div>
+                <button onClick={this.tempplay}> Play </button>
+            </div>
+        )
     }
 }
 

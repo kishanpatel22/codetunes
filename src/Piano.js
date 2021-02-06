@@ -3,8 +3,7 @@ import {React, Component} from 'react'
 const AudioContext = window.AudioContext || window.webkitAudioContext
 /* Frequency of Pinao keys in Hz */
 const FrequencyBindings = [261.6, 392, 440, 523.3, 659.3, 739.99, 
-                           830.61, 1046.50, 1479.98, 1760.00, 2093.00, 2793.83, 
-                           3520.00, 4978.03, 6271.93]
+                           830.61, 1046.50, 1479.98, 1760.00, 2093.00, 2793.83]
 
 class Piano extends Component {
     
@@ -17,7 +16,7 @@ class Piano extends Component {
         this.songFrequency = FrequencyBindings
         this.numFreqBands = this.songFrequency.length
         this.beatsPerMilliSecond = 1000 / 4
-        this.timeChange = 0.5
+        this.timeChange = 0.4
 
         /* audio context manager for the getting oscillators */
         this.ctx = new AudioContext()
@@ -42,9 +41,6 @@ class Piano extends Component {
     }
     
     play(number) {
-        if(number === undefined) {
-            return;
-        }
         /* logic to map given number to particular frequency */
         this.index = number
         this.index = this.index % this.numFreqBands

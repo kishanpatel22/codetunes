@@ -17,7 +17,7 @@ class SourceCode extends Component {
 		this.state = {
 			show: false,
             programCode: "",
-            piano : false,
+            piano : true,
             play : false
 		}
         
@@ -27,6 +27,8 @@ class SourceCode extends Component {
         this.onChangeText = this.onChangeText.bind(this)
         this.play = this.play.bind(this)
         this.stop = this.stop.bind(this)
+        this.selectPiano = this.selectPiano.bind(this)
+        this.selectGuitar = this.selectGuitar.bind(this)
     }
 
 	handleClose() {
@@ -54,13 +56,33 @@ class SourceCode extends Component {
     stop() {
         this.setState({ play : false });
     }
+        
+    selectPiano() {
+        this.setState({ piano: true });
+    }
+    
+    selectGuitar() {
+        this.setState({ piano: false });
+    }
 
     render() {
         var program_input = <Form.Control placeHolder="{ Write Source Code }" defaultValue={this.state.programCode}
                                           onChange = {this.onChangeText} size="lg" 
                                           as="textarea" rows="14" name="program"/>
         if(this.state.play) {
-            program_input = <Play code={this.state.programCode} />
+            var instru = 'guitar'
+            if(this.state.piano) {
+                instru = 'piano'
+            }
+            program_input = <Play code={this.state.programCode} instrument={instru}/>
+        }
+        
+        var piano_style = "outline-primary"
+        var guitar_style = "outline-primary"
+        if(this.state.piano) {
+            piano_style = "primary" 
+        } else {
+            guitar_style = "primary" 
         }
 
         return (
@@ -69,9 +91,9 @@ class SourceCode extends Component {
                     <Col>
                         <div style={{ paddingTop: '75%'}}>
                             <div>
-                                <Button variant="outline-primary" size="lg" > Piano </Button>
+                                <Button variant={piano_style} onClick={this.selectPiano} size="lg" > Piano </Button>
                                 <br/><br/>
-                                <Button variant="outline-primary" size="lg" > Gitar </Button>
+                                <Button variant={guitar_style} onClick={this.selectGuitar} size="lg" > Guitar </Button>
                             </div>
                         </div>
                     </Col>
