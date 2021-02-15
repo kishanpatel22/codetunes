@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal'
-import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import './Styles.css'
 
 class CodeTunes extends Component {
     constructor(props) {
@@ -21,9 +21,9 @@ class CodeTunes extends Component {
 
     render() {
         return (
-            <div style={{ backgroundColor : '#0067D4', borderRadius: '60px'}}>  
-                <div style={{ display:'inline-block', paddingLeft: '5%'}}>
-                    <p style={{ color : 'white', fontSize: '20px'}}> 
+            <div className="flex-container" style={{ backgroundColor : '#0067D4', borderRadius: '60px', display:'flex'}}>  
+                <div className="flex-content1">
+                    <p style={{ color : 'white' }}> 
                         Hear <strong style={{ color: '#000F23'}}>music</strong> of any  
                              <strong style={{ color: '#000F23'}}> program source code</strong> 
                         <br/>
@@ -31,15 +31,14 @@ class CodeTunes extends Component {
                         and not <strong style={{ color: '#000F23'}}> bugs </strong> 
                     </p>
                 </div>
-                <div style={{ display: 'inline-block' }}>
+                <div className="flex-content2">
                     <a target="_blank" href="https://github.com/kishanpatel22/codetunes" 
-                       style={{ marginLeft:'5%', color: 'white', fontSize: '70px'}}>
+                       style={{ color: 'white' }}>
                         CodeTunes 
                     </a>
                 </div>
-                <div style={{ display: 'inline-block', paddingLeft: '10%'}}>
-                    <br/>
-                    <div style={{ paddingLeft: '25%' }}>
+                <div className="flex-content3">
+                    <div>
                         <Button variant="primary" size="lg" onClick={this.handleShow}>
                             How this app works ?
                         </Button>
@@ -49,7 +48,7 @@ class CodeTunes extends Component {
                 <Modal show={this.state.show} onHide={this.handleClose} size="lg" >
 				    <Modal.Header closeButton>
 				    	<Modal.Title>
-                            CodeTunes : create music from program source code !
+                            CodeTunes : create music from program source code
                         </Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
@@ -60,8 +59,8 @@ class CodeTunes extends Component {
                             makes of Web Audio API to create frequency pitches
                         </p>
                         <p>
-                           Currently the Gitar Tunes are provided by fetching an amazon API for
-                           Guitar pitches!
+                           Currently the Gitar Tunes are provided by fetching an amazon music API for
+                           generating the Guitar pitches!
                         </p>
                     </Modal.Body>
 					<Modal.Footer>

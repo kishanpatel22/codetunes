@@ -2,9 +2,6 @@ import './App.css';
 import SourceCode from './SourceCode.js'
 import CodeTunes from './CodeTunes.js'
 import Guitar from './Guitar.js'
-/*
-
-*/
 
 function App() {
   return (

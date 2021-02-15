@@ -10,6 +10,7 @@ import Modal from 'react-bootstrap/Modal'
 import Example from './Example.js'
 import Program from './Program.js'
 import Play from './Play.js'
+import './Styles.css'
 
 class SourceCode extends Component {
     constructor(props) {
@@ -86,40 +87,33 @@ class SourceCode extends Component {
         }
 
         return (
-            <Container>
-                <Row>
-                    <Col>
-                        <div style={{ paddingTop: '75%'}}>
-                            <div>
-                                <Button variant={piano_style} onClick={this.selectPiano} size="lg" > Piano </Button>
-                                <br/><br/>
-                                <Button variant={guitar_style} onClick={this.selectGuitar} size="lg" > Guitar </Button>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col xs={8}>
-                        <Form>
-                            <Form.Group controlId="exampleForm.ControlTextarea1">
-                                <p style={{ marginTop: '1%', color: 'white', fontSize: '20px', textAlign: 'center'}}> 
-                                    <Button variant="outline-info" size="lg" onClick={this.play} > Play </Button>
-                                    <Button style={{ marginLeft:'5%'}} variant="outline-dark" 
-                                                     onClick={this.stop} size="lg"> Stop </Button>
-                                    <span style={{marginLeft:'5%'}}>
-                                        Gernerate your source code tunes !
-                                    </span>
-                                </p>
-                                {program_input}    
-                            </Form.Group>
-                        </Form>
-                    </Col>
-                    <Col>
-                        <div style={{ paddingLeft: '25%', paddingTop: '100%'}}>
-                            <Button variant="outline-info" size="lg" onClick={this.handleShow}>
-					            Examples 
-                            </Button>
-                        </div>
-                    </Col>
-                </Row>
+            <div className="flex-container" style={{display: 'flex'}}>
+                <div>
+                    <div className="code-content1">
+                        <Button variant={piano_style} onClick={this.selectPiano} size="lg" > Piano </Button>
+                        <Button variant={guitar_style} onClick={this.selectGuitar} size="lg" > Guitar </Button>
+                    </div>
+                </div>
+                <div>
+                    <Form>
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <p style={{ marginTop: '1%', color: 'white', fontSize: '20px', textAlign: 'center'}}> 
+                                <Button variant="outline-info" size="lg" onClick={this.play} > Play </Button>
+                                <Button style={{ marginLeft:'5%'}} variant="outline-dark" 
+                                                 onClick={this.stop} size="lg"> Stop </Button>
+                                <span style={{marginLeft:'5%'}}>
+                                    Gernerate your source code tunes !
+                                </span>
+                            </p>
+                            {program_input}    
+                        </Form.Group>
+                     </Form>
+                </div>
+                <div>
+                    <Button variant="outline-info" size="lg" onClick={this.handleShow}>
+					    Examples 
+                    </Button>
+                </div>
 
                 <Modal show={this.state.show} onHide={this.handleClose} size="lg" >
 				    <Modal.Header closeButton>
@@ -144,7 +138,7 @@ class SourceCode extends Component {
                         </div>
 					</Modal.Footer>
 			    </Modal>
-            </Container>
+            </div>
         )
     }
 }

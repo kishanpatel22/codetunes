@@ -15,7 +15,7 @@ class Play extends Component {
         
         this.padded_lines = this.max_display_lines - this.max_tune_index + 1;
         
-        if(props.code == "") {
+        if(props.code === "") {
             var source_code_lines = []
             this.num_code_lines = 1;
         } else {
