@@ -1,4 +1,4 @@
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     .flex-container {
         flex-direction: column;
         align-items: center;
@@ -14,7 +14,15 @@
         padding-bottom: 4%;
     }
     .code-content1 {
-        margin: 5%; 
+        padding: 5%;
+    }
+    .code-content2 {
+        height: 100%;
+        width: 95%;
+    }
+    .code-content2-items {
+        display: inline-block;
+        padding-left: 25px;
     }
 }
 
@@ -34,6 +42,18 @@
         padding-right: 5%;
     }
     .code-content1 {
-        margin: 5%; 
+        margin: auto;
+        margin-left: 20%;
+    }
+    .code-content2 {
+        margin-left: 7%;
+        flex: 0.9;
+    }
+    .code-content2-items {
+        display: inline-block;
+        padding-left: 5%;
+    }
+    .code-content3 {
+        margin: auto;
     }
 }

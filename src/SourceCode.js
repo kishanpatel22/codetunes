@@ -88,28 +88,36 @@ class SourceCode extends Component {
 
         return (
             <div className="flex-container" style={{display: 'flex'}}>
-                <div>
+                <div style={{display: 'flex'}}>
                     <div className="code-content1">
                         <Button variant={piano_style} onClick={this.selectPiano} size="lg" > Piano </Button>
+                    </div>
+                    <div className="code-content1">
                         <Button variant={guitar_style} onClick={this.selectGuitar} size="lg" > Guitar </Button>
                     </div>
                 </div>
-                <div>
+                <div className="code-content2">
                     <Form>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <p style={{ marginTop: '1%', color: 'white', fontSize: '20px', textAlign: 'center'}}> 
-                                <Button variant="outline-info" size="lg" onClick={this.play} > Play </Button>
-                                <Button style={{ marginLeft:'5%'}} variant="outline-dark" 
-                                                 onClick={this.stop} size="lg"> Stop </Button>
-                                <span style={{marginLeft:'5%'}}>
-                                    Gernerate your source code tunes !
-                                </span>
+                                <div className="code-content2-items">
+                                    <Button variant="outline-info" size="lg" onClick={this.play} > Play </Button>
+                                </div>
+                                <div className="code-content2-items">
+                                    <Button style={{ marginLeft:'5%'}} variant="outline-dark" 
+                                                     onClick={this.stop} size="lg"> Stop </Button>
+                                </div>
+                                <div>
+                                    <span style={{marginLeft:'5%'}}>
+                                        Gernerate your source code tunes !
+                                    </span>
+                                </div>
                             </p>
                             {program_input}    
                         </Form.Group>
                      </Form>
                 </div>
-                <div>
+                <div className="code-content3">
                     <Button variant="outline-info" size="lg" onClick={this.handleShow}>
 					    Examples 
                     </Button>
@@ -122,12 +130,15 @@ class SourceCode extends Component {
                         </Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
+                        <Button variant="light" size="lg" block  onClick={() => this.updateInputBox('holyC')} >
+                            <Example name="Holy C" code={Program['holyC']}/> 
+                        </Button>
                         <Button variant="light" size="lg" block  onClick={() => this.updateInputBox('nodejs')} >
                             <Example name="NodeJS Server" code={Program['nodejs']}/>
                         </Button>
                         <br/>
-                        <Button variant="light" size="lg" block  onClick={() => this.updateInputBox('React')} >
-                            <Example name="React" code={Program['React']}/> 
+                        <Button variant="light" size="lg" block  onClick={() => this.updateInputBox('react')} >
+                            <Example name="React" code={Program['react']}/> 
                         </Button>
                     </Modal.Body>
 					<Modal.Footer>
